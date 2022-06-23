@@ -19,4 +19,25 @@ function playRound(playerSelection){
     }
 }
 
-console.log(playRound("rock"));
+function game(){
+    // create a way to store the scores
+    let scores = [0, 0, 0]
+    // create a loop to run the game 5 times and save the score each time, as well as displaying it
+    for (let i = 0 ; i < 5 ; i++){
+        // create a prompt to get input from human player and match it against the computer's guess
+        let selection = window.prompt("Rock, Paper or Scissors?");
+        playRound(selection);
+        if (selection.toLowerCase() === computerSelection()){
+            scores[2] += 1;
+        } else if ((selection.toLowerCase() === "rock" && computerSelection() === "paper") || (selection.toLowerCase() === "paper" && computerSelection() === "scissors") || (selection.toLowerCase() === "scissors" && computerSelection() === "rock")){
+            scores[1] += 1;
+        } else {
+            scores[0] += 1;
+        }
+        
+        console.log("You have won " + scores[0] + "time(s), lost " + scores[1] + "time(s) and drew " + scores[2] + " times.")
+    }
+    
+}
+
+game();
