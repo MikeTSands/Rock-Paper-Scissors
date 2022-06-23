@@ -3,20 +3,20 @@
 function computerPlay(){
     let choice = ["Rock", "Paper", "Scissors"];
     let num = Math.floor(Math.random() * 3);
-    return choice[num];
+    return choice[num].toLowerCase();
 }
 
-function gamePlay(playerSelection, computerSelection){
-    if (playerSelection.toLowerCase() === computerSelection.toLowerCase()){
+let computerSelection = computerPlay;
+
+function playRound(playerSelection){
+    let computerSelection = computerPlay();
+    if (playerSelection.toLowerCase() === computerSelection){
         return "It's a tie.  Both you and the computer chose " + playerSelection.toLowerCase() + ".";
-    } else if ((playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "paper") || (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "scissors") || (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "rock")) {
-        return "You lose.  You chose " + playerSelection.toLowerCase() + " while the computer chose " + computerSelection.toLowerCase() + ".";
+    } else if ((playerSelection.toLowerCase() === "rock" && computerSelection === "paper") || (playerSelection.toLowerCase() === "paper" && computerSelection === "scissors") || (playerSelection.toLowerCase() === "scissors" && computerSelection === "rock")) {
+        return "You lose.  You chose " + playerSelection.toLowerCase() + " while the computer chose " + computerSelection + ".";
     } else {
-        return "You win.  You chose " + playerSelection.toLowerCase() + " while the computer chose " + computerSelection.toLowerCase() + ".";
+        return "You win.  You chose " + playerSelection.toLowerCase() + " while the computer chose " + computerSelection + ".";
     }
 }
 
-console.log(gamePlay("ROCK", "SCISSors"));
-console.log(gamePlay("ROCK", "rock"));
-console.log(gamePlay("ROCK", "paper"));
-console.log(gamePlay("ROcK", "scissors"));
+console.log(playRound("rock"));
