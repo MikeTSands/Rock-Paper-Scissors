@@ -8,17 +8,27 @@ function computerPlay(){
 
 let computerSelection = computerPlay;
 
+
+//function to play a single round
 function playRound(playerSelection){
     let computerSelection = computerPlay();
     if (playerSelection.toLowerCase() === computerSelection){
-        return "It's a tie.  Both you and the computer chose " + playerSelection.toLowerCase() + ".";
+        console.log("It's a tie.  Both you and the computer chose " + playerSelection.toLowerCase() + "."); 
     } else if ((playerSelection.toLowerCase() === "rock" && computerSelection === "paper") || (playerSelection.toLowerCase() === "paper" && computerSelection === "scissors") || (playerSelection.toLowerCase() === "scissors" && computerSelection === "rock")) {
-        return "You lose.  You chose " + playerSelection.toLowerCase() + " while the computer chose " + computerSelection + ".";
+        console.log("You lose.  You chose " + playerSelection.toLowerCase() + " while the computer chose " + computerSelection + "."); 
     } else {
-        return "You win.  You chose " + playerSelection.toLowerCase() + " while the computer chose " + computerSelection + ".";
+        console.log("You win.  You chose " + playerSelection.toLowerCase() + " while the computer chose " + computerSelection + "."); 
     }
 }
 
+//add event listener to play round using buttons
+const buttons = document.querySelectorAll('.btn');
+buttons.forEach(button => {
+    button.addEventListener('click', () => playRound(button.innerText)); 
+});
+
+
+/*
 function game(){
     // create a way to store the scores
     let scores = [0, 0, 0]
@@ -41,3 +51,5 @@ function game(){
 }
 
 game();
+
+*/
