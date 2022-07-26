@@ -8,8 +8,16 @@ function computerPlay(){
 
 let computerSelection = computerPlay;
 
+let playerWin = 0;
+let compWin = 0;
+let gameTie = 0;
+
+
+
+
 
 //function to play a single round
+/*
 function playRound(playerSelection){
     let computerSelection = computerPlay();
     if (playerSelection.toLowerCase() === computerSelection){
@@ -18,6 +26,26 @@ function playRound(playerSelection){
         console.log("You lose.  You chose " + playerSelection.toLowerCase() + " while the computer chose " + computerSelection + "."); 
     } else {
         console.log("You win.  You chose " + playerSelection.toLowerCase() + " while the computer chose " + computerSelection + "."); 
+    }
+}
+*/
+// variables to hold scores are changing, but html is not
+function playRound(playerSelection){
+    let computerSelection = computerPlay();
+    if (playerSelection.toLowerCase() === computerSelection){
+        gameTie++ 
+        document.getElementById('tie').textContent = "Ties: " + gameTie;
+    } else if ((playerSelection.toLowerCase() === "rock" && computerSelection === "paper") || (playerSelection.toLowerCase() === "paper" && computerSelection === "scissors") || (playerSelection.toLowerCase() === "scissors" && computerSelection === "rock")) {
+        compWin++
+        document.getElementById('computer').textContent = "Computer wins: " + compWin;
+    } else {
+        playerWin++
+        document.getElementById('player').textContent = "Player wins: " + playerWin;
+    }
+    if (compWin === 5){
+        alert("Computer wins!");
+    } else if (playerWin === 5){
+        alert("Player wins!");
     }
 }
 
